@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/<your-username>/argo-demo.git'
+    repoURL: https://github.com/DevUnnati/argo-rollouts-argocd.git
     targetRevision: main
     path: overlays/dev
   destination:
