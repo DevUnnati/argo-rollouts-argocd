@@ -5,9 +5,9 @@ kind: Kustomization
 resources:
   - ../../base
 
-# patches for dev environment (use modern 'patches')
-patches:
-  - path: patch-rollout.yaml
-    target:
-      kind: Rollout
-      name: demo-rollout
+# # patches for dev environment (use modern 'patches')
+# patches:
+#   - path: patch-rollout.yaml
+#     target:
+#       kind: Rollout
+#       name: demo-rollout
