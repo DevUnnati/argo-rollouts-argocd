@@ -1,0 +1,28 @@
+Steps to Add Repo with SSH:
+Here is exactly where you need to place both keys to make the connection work:
+
+1. The Public Key goes into Bitbucket
+
+The public key acts as the lock. You must add it to your Bitbucket repository so Bitbucket knows your cluster is allowed to read the code.
+1. Open your public key file (e.g., id_ed25519.pub) and copy the entire text string.
+2. Log into Bitbucket and navigate to your specific repository.
+3. On the left-hand menu, click Repository settings.
+4. Scroll down and click on Access keys (under the Security or Settings section).
+5. Click Add key, paste your public key string into the box, give it a name (like argocd-stage), and click Save.
+
+2. The Private Key goes into the Argo CD UI
+
+The private key acts as the digital signature. You must give it to Argo CD so it can authenticate itself against Bitbucket.
+1. Open your private key file (e.g., id_ed25519) and copy the entire block of text—including the -----BEGIN OPENSSH PRIVATE KEY----- and -----END OPENSSH PRIVATE KEY----- lines.
+2. Log into your Argo CD GUI.
+3. Go to Settings (the gear icon on the left menu) → Repositories → Click Connect Repo.
+4. Fill out the connection settings like this:
+	• Choose connection method: Select VIA SSH
+	• Repository URL: Paste your Bitbucket SSH URL (e.g., git@bitbucket.org:your-workspace/your-repo.git)
+	• SSH Private Key: Paste your entire private key text block directly into this box.
+	• TLS Options: Check the box for Skip server verification.
+5. Click the Connect button at the top.
+Once you hit connect, does the repository status change to a green SUCCESSFUL status, or are you hitting a validation error when pasting the key?
+
+command to generate key:
+ssh-keygen -t ed25519 -C "argocd-bitbucket-key" -f ./argocd-bitbucket
