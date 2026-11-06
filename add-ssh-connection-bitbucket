@@ -26,3 +26,4 @@ Once you hit connect, does the repository status change to a green SUCCESSFUL st
 
 command to generate key:
 ssh-keygen -t ed25519 -C "argocd-bitbucket-key" -f ./argocd-bitbucket
+ argocd account update-password   --account    --current-password    --new-password 
